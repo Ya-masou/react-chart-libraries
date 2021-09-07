@@ -115,7 +115,9 @@ export function BarChart() {
   return (
     <div
       style={{
-        aspectRatio: "16 / 9", // safari これ使えない
+        // aspectRatio: "16 / 9", // safari これ使えない
+        width: "100%",
+        height: "320px",
       }}
     >
       <ResponsiveBar

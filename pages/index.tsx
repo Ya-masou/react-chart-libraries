@@ -23,6 +23,9 @@ const Home: NextPage = () => {
           <li>
             <Link href="/nivo">nivo</Link>
           </li>
+          <li>
+            <Link href="/recharts">recharts</Link>
+          </li>
         </ul>
       </main>
     </div>

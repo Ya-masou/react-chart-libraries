@@ -234,20 +234,18 @@ function PieChart() {
 
 export default function ReactChartjs2Page() {
   return (
-    <>
-      <main
-        style={{
-          padding: "1rem",
-        }}
-      >
-        <BarChart />
-        <hr />
-        <LineChart />
-        <hr />
-        <RadarChart />
-        <hr />
-        <PieChart />
-      </main>
-    </>
+    <main
+      style={{
+        padding: "1rem",
+      }}
+    >
+      <BarChart />
+      <hr />
+      <LineChart />
+      <hr />
+      <RadarChart />
+      <hr />
+      <PieChart />
+    </main>
   );
 }

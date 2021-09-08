@@ -32,6 +32,9 @@ const Home: NextPage = () => {
           <li>
             <Link href="/apexcharts">apexcharts</Link>
           </li>
+          <li>
+            <Link href="/reactvis">reactvis</Link>
+          </li>
         </ul>
       </main>
     </div>

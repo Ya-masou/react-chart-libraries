@@ -29,6 +29,9 @@ const Home: NextPage = () => {
           <li>
             <Link href="/visx">visx</Link>
           </li>
+          <li>
+            <Link href="/apexcharts">apexcharts</Link>
+          </li>
         </ul>
       </main>
     </div>

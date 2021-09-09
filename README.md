@@ -1,5 +1,17 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## 概要
+
+React で使用できるチャートライブラリをいくつか動作検証する。
+検証するチャートライブラリ
+* [Recharts](https://recharts.org/en-US/)
+* [reactchartjs/react\-chartjs\-2](https://github.com/reactchartjs/react-chartjs-2)
+* [react\-vis](https://uber.github.io/react-vis/)
+* [Victory \| VictoryChart](https://formidable.com/open-source/victory/docs/victory-chart/)
+* [visx \| visualization components](https://airbnb.io/visx/)
+* [ApexCharts\.js \- Open Source JavaScript Charts for your website](https://apexcharts.com/)
+* [Home \| nivo](https://nivo.rocks/)
+
 ## Getting Started
 
 First, run the development server:

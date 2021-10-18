@@ -92,6 +92,7 @@ function LineChart() {
 
   return <Chart series={series} options={options} type="line" />;
 }
+
 function RadarChart() {
   const series: ApexOptions["series"] = [
     {
@@ -107,10 +108,6 @@ function RadarChart() {
       data: [44, 76, 78, 13, 43, 10],
     },
   ];
-
-  const yMax = useMemo(() => {
-    return Math.max(...[...series].map((series) => series.data).flat());
-  }, [series]);
 
   const options: ApexOptions = {
     chart: {
@@ -136,11 +133,9 @@ function RadarChart() {
     },
     xaxis: {
       categories: ["2011", "2012", "2013", "2014", "2015", "2016"],
-      showAlways: true,
     },
     yaxis: {
       min: 0,
-      max: () => yMax,
       showAlways: true,
     },
   };

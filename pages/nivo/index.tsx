@@ -1,9 +1,11 @@
+import { Box, AspectRatio } from "@chakra-ui/react"
 import { ResponsiveBar, Bar } from "@nivo/bar";
 import { ResponsiveLine } from "@nivo/line";
 import { ResponsiveRadar } from "@nivo/radar";
 import { ResponsivePie, Pie } from "@nivo/pie";
+import { ResponsiveHeatMap } from "@nivo/heatmap"
 
-export function BarChart() {
+function BarChart() {
   const data = [
     {
       country: "AD",
@@ -113,13 +115,8 @@ export function BarChart() {
   ];
 
   return (
-    <div
-      style={{
-        // aspectRatio: "16 / 9", // safari これ使えない
-        width: "100%",
-        height: "320px",
-      }}
-    >
+    <Box maxW="800px" h="lg">
+      <h2>Bar Chart</h2>
       <ResponsiveBar
         data={data}
         keys={["hot dog", "burger", "sandwich", "kebab", "fries", "donut"]}
@@ -211,11 +208,11 @@ export function BarChart() {
           },
         ]}
       />
-    </div>
+    </Box>
   );
 }
 
-export function LineChart() {
+function LineChart() {
   const data = [
     {
       id: "japan",
@@ -490,11 +487,8 @@ export function LineChart() {
   ];
 
   return (
-    <div
-      style={{
-        aspectRatio: "16 / 9",
-      }}
-    >
+    <Box maxW="800px" h="lg">
+      <h2>Line Chart</h2>
       <ResponsiveLine
         data={data}
         margin={{ top: 50, right: 50, bottom: 50, left: 60 }}
@@ -560,11 +554,11 @@ export function LineChart() {
           },
         ]}
       />
-    </div>
+    </Box>
   );
 }
 
-export function RadarChart() {
+function RadarChart() {
   const data = [
     {
       taste: "fruity",
@@ -599,64 +593,63 @@ export function RadarChart() {
   ];
 
   return (
-    <div
-      style={{
-        aspectRatio: "16 / 9",
-      }}
-    >
-      <ResponsiveRadar
-        data={data}
-        keys={["chardonay", "carmenere", "syrah"]}
-        indexBy="taste"
-        maxValue="auto"
-        margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
-        curve="linearClosed"
-        borderWidth={2}
-        borderColor={{ from: "color" }}
-        gridLevels={5}
-        gridShape="circular"
-        gridLabelOffset={36}
-        enableDots={true}
-        dotSize={10}
-        dotColor={{ theme: "background" }}
-        dotBorderWidth={2}
-        dotBorderColor={{ from: "color" }}
-        enableDotLabel={true}
-        dotLabel="value"
-        dotLabelYOffset={-12}
-        colors={{ scheme: "nivo" }}
-        fillOpacity={0.25}
-        blendMode="multiply"
-        animate={true}
-        motionConfig="wobbly"
-        isInteractive={true}
-        legends={[
-          {
-            anchor: "top-left",
-            direction: "column",
-            translateX: -50,
-            translateY: -40,
-            itemWidth: 80,
-            itemHeight: 20,
-            itemTextColor: "#999",
-            symbolSize: 12,
-            symbolShape: "circle",
-            effects: [
-              {
-                on: "hover",
-                style: {
-                  itemTextColor: "#000",
+    <Box maxW="800px">
+      <h2>Rader Chart</h2>
+      <AspectRatio ratio={16 / 9}>
+        <ResponsiveRadar
+          data={data}
+          keys={["chardonay", "carmenere", "syrah"]}
+          indexBy="taste"
+          maxValue="auto"
+          margin={{ top: 70, right: 80, bottom: 40, left: 80 }}
+          curve="linearClosed"
+          borderWidth={2}
+          borderColor={{ from: "color" }}
+          gridLevels={5}
+          gridShape="circular"
+          gridLabelOffset={36}
+          enableDots={true}
+          dotSize={10}
+          dotColor={{ theme: "background" }}
+          dotBorderWidth={2}
+          dotBorderColor={{ from: "color" }}
+          enableDotLabel={true}
+          dotLabel="value"
+          dotLabelYOffset={-12}
+          colors={{ scheme: "nivo" }}
+          fillOpacity={0.25}
+          blendMode="multiply"
+          animate={true}
+          motionConfig="wobbly"
+          isInteractive={true}
+          legends={[
+            {
+              anchor: "top-left",
+              direction: "column",
+              translateX: -50,
+              translateY: -40,
+              itemWidth: 80,
+              itemHeight: 20,
+              itemTextColor: "#999",
+              symbolSize: 12,
+              symbolShape: "circle",
+              effects: [
+                {
+                  on: "hover",
+                  style: {
+                    itemTextColor: "#000",
+                  },
                 },
-              },
-            ],
-          },
-        ]}
-      />
-    </div>
+              ],
+            },
+          ]}
+        />
+      </AspectRatio>
+    </Box>
   );
 }
 
-export function PieChart() {
+function PieChart() {
   const data = [
     {
       id: "javascript",
@@ -691,124 +684,411 @@ export function PieChart() {
   ];
 
   return (
-    <div
-      style={{
-        aspectRatio: "16 / 9",
-      }}
-    >
-      <ResponsivePie
-        data={data}
-        margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-        innerRadius={0.5}
-        padAngle={0.7}
-        // cornerRadius={3}
-        activeOuterRadiusOffset={8}
-        borderWidth={1}
-        borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
-        arcLinkLabelsSkipAngle={10}
-        arcLinkLabelsTextColor="#333333"
-        arcLinkLabelsThickness={2}
-        arcLinkLabelsColor={{ from: "color" }}
-        arcLabelsSkipAngle={10}
-        arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
-        defs={[
-          {
-            id: "dots",
-            type: "patternDots",
-            background: "inherit",
-            color: "rgba(255, 255, 255, 0.3)",
-            size: 4,
-            padding: 1,
-            stagger: true,
-          },
-          {
-            id: "lines",
-            type: "patternLines",
-            background: "inherit",
-            color: "rgba(255, 255, 255, 0.3)",
-            rotation: -45,
-            lineWidth: 6,
-            spacing: 10,
-          },
-        ]}
-        fill={[
-          {
-            match: {
-              id: "ruby",
+    <Box maxW="800px">
+      <h2>Pie Chart</h2>
+      <AspectRatio ratio={16 / 9}>
+        <ResponsivePie
+          data={data}
+          margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+          innerRadius={0.5}
+          padAngle={0.7}
+          // cornerRadius={3}
+          activeOuterRadiusOffset={8}
+          borderWidth={1}
+          borderColor={{ from: "color", modifiers: [["darker", 0.2]] }}
+          arcLinkLabelsSkipAngle={10}
+          arcLinkLabelsTextColor="#333333"
+          arcLinkLabelsThickness={2}
+          arcLinkLabelsColor={{ from: "color" }}
+          arcLabelsSkipAngle={10}
+          arcLabelsTextColor={{ from: "color", modifiers: [["darker", 2]] }}
+          defs={[
+            {
+              id: "dots",
+              type: "patternDots",
+              background: "inherit",
+              color: "rgba(255, 255, 255, 0.3)",
+              size: 4,
+              padding: 1,
+              stagger: true,
             },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "c",
+            {
+              id: "lines",
+              type: "patternLines",
+              background: "inherit",
+              color: "rgba(255, 255, 255, 0.3)",
+              rotation: -45,
+              lineWidth: 6,
+              spacing: 10,
             },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "go",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "python",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "scala",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "lisp",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "elixir",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "javascript",
-            },
-            id: "lines",
-          },
-        ]}
-        legends={[
-          {
-            anchor: "bottom",
-            direction: "row",
-            justify: false,
-            translateX: 0,
-            translateY: 56,
-            itemsSpacing: 0,
-            itemWidth: 100,
-            itemHeight: 18,
-            itemTextColor: "#999",
-            itemDirection: "left-to-right",
-            itemOpacity: 1,
-            symbolSize: 18,
-            symbolShape: "circle",
-            effects: [
-              {
-                on: "hover",
-                style: {
-                  itemTextColor: "#000",
-                },
+          ]}
+          fill={[
+            {
+              match: {
+                id: "ruby",
               },
-            ],
-          },
-        ]}
-      />
-    </div>
+              id: "dots",
+            },
+            {
+              match: {
+                id: "c",
+              },
+              id: "dots",
+            },
+            {
+              match: {
+                id: "go",
+              },
+              id: "dots",
+            },
+            {
+              match: {
+                id: "python",
+              },
+              id: "dots",
+            },
+            {
+              match: {
+                id: "scala",
+              },
+              id: "lines",
+            },
+            {
+              match: {
+                id: "lisp",
+              },
+              id: "lines",
+            },
+            {
+              match: {
+                id: "elixir",
+              },
+              id: "lines",
+            },
+            {
+              match: {
+                id: "javascript",
+              },
+              id: "lines",
+            },
+          ]}
+          legends={[
+            {
+              anchor: "bottom",
+              direction: "row",
+              justify: false,
+              translateX: 0,
+              translateY: 56,
+              itemsSpacing: 0,
+              itemWidth: 100,
+              itemHeight: 18,
+              itemTextColor: "#999",
+              itemDirection: "left-to-right",
+              itemOpacity: 1,
+              symbolSize: 18,
+              symbolShape: "circle",
+              effects: [
+                {
+                  on: "hover",
+                  style: {
+                    itemTextColor: "#000",
+                  },
+                },
+              ],
+            },
+          ]}
+        />
+      </AspectRatio>
+    </Box>
   );
+}
+
+function HeatMapChart() {
+  const data = [
+    {
+      "country": "AD",
+      "hot dog": 5,
+      "hot dogColor": "hsl(209, 70%, 50%)",
+      "burger": 15,
+      "burgerColor": "hsl(348, 70%, 50%)",
+      "sandwich": 70,
+      "sandwichColor": "hsl(131, 70%, 50%)",
+      "kebab": 43,
+      "kebabColor": "hsl(139, 70%, 50%)",
+      "fries": 7,
+      "friesColor": "hsl(269, 70%, 50%)",
+      "donut": 61,
+      "donutColor": "hsl(30, 70%, 50%)",
+      "junk": 70,
+      "junkColor": "hsl(42, 70%, 50%)",
+      "sushi": 8,
+      "sushiColor": "hsl(300, 70%, 50%)",
+      "ramen": 75,
+      "ramenColor": "hsl(259, 70%, 50%)",
+      "curry": 48,
+      "curryColor": "hsl(341, 70%, 50%)",
+      "udon": 70,
+      "udonColor": "hsl(156, 70%, 50%)"
+    },
+    {
+      "country": "AE",
+      "hot dog": 42,
+      "hot dogColor": "hsl(197, 70%, 50%)",
+      "burger": 79,
+      "burgerColor": "hsl(270, 70%, 50%)",
+      "sandwich": 67,
+      "sandwichColor": "hsl(194, 70%, 50%)",
+      "kebab": 0,
+      "kebabColor": "hsl(260, 70%, 50%)",
+      "fries": 27,
+      "friesColor": "hsl(87, 70%, 50%)",
+      "donut": 83,
+      "donutColor": "hsl(331, 70%, 50%)",
+      "junk": 12,
+      "junkColor": "hsl(193, 70%, 50%)",
+      "sushi": 77,
+      "sushiColor": "hsl(252, 70%, 50%)",
+      "ramen": 36,
+      "ramenColor": "hsl(313, 70%, 50%)",
+      "curry": 63,
+      "curryColor": "hsl(305, 70%, 50%)",
+      "udon": 100,
+      "udonColor": "hsl(155, 70%, 50%)"
+    },
+    {
+      "country": "AF",
+      "hot dog": 75,
+      "hot dogColor": "hsl(278, 70%, 50%)",
+      "burger": 65,
+      "burgerColor": "hsl(226, 70%, 50%)",
+      "sandwich": 77,
+      "sandwichColor": "hsl(85, 70%, 50%)",
+      "kebab": 96,
+      "kebabColor": "hsl(51, 70%, 50%)",
+      "fries": 92,
+      "friesColor": "hsl(333, 70%, 50%)",
+      "donut": 84,
+      "donutColor": "hsl(2, 70%, 50%)",
+      "junk": 30,
+      "junkColor": "hsl(109, 70%, 50%)",
+      "sushi": 24,
+      "sushiColor": "hsl(138, 70%, 50%)",
+      "ramen": 80,
+      "ramenColor": "hsl(336, 70%, 50%)",
+      "curry": 86,
+      "curryColor": "hsl(54, 70%, 50%)",
+      "udon": 20,
+      "udonColor": "hsl(70, 70%, 50%)"
+    },
+    {
+      "country": "AG",
+      "hot dog": 71,
+      "hot dogColor": "hsl(341, 70%, 50%)",
+      "burger": 9,
+      "burgerColor": "hsl(346, 70%, 50%)",
+      "sandwich": 11,
+      "sandwichColor": "hsl(108, 70%, 50%)",
+      "kebab": 81,
+      "kebabColor": "hsl(66, 70%, 50%)",
+      "fries": 7,
+      "friesColor": "hsl(287, 70%, 50%)",
+      "donut": 86,
+      "donutColor": "hsl(107, 70%, 50%)",
+      "junk": 85,
+      "junkColor": "hsl(57, 70%, 50%)",
+      "sushi": 99,
+      "sushiColor": "hsl(74, 70%, 50%)",
+      "ramen": 30,
+      "ramenColor": "hsl(140, 70%, 50%)",
+      "curry": 12,
+      "curryColor": "hsl(96, 70%, 50%)",
+      "udon": 19,
+      "udonColor": "hsl(175, 70%, 50%)"
+    },
+    {
+      "country": "AI",
+      "hot dog": 22,
+      "hot dogColor": "hsl(73, 70%, 50%)",
+      "burger": 23,
+      "burgerColor": "hsl(292, 70%, 50%)",
+      "sandwich": 83,
+      "sandwichColor": "hsl(41, 70%, 50%)",
+      "kebab": 9,
+      "kebabColor": "hsl(281, 70%, 50%)",
+      "fries": 83,
+      "friesColor": "hsl(34, 70%, 50%)",
+      "donut": 48,
+      "donutColor": "hsl(120, 70%, 50%)",
+      "junk": 30,
+      "junkColor": "hsl(135, 70%, 50%)",
+      "sushi": 71,
+      "sushiColor": "hsl(166, 70%, 50%)",
+      "ramen": 38,
+      "ramenColor": "hsl(220, 70%, 50%)",
+      "curry": 74,
+      "curryColor": "hsl(187, 70%, 50%)",
+      "udon": 24,
+      "udonColor": "hsl(288, 70%, 50%)"
+    },
+    {
+      "country": "AL",
+      "hot dog": 91,
+      "hot dogColor": "hsl(168, 70%, 50%)",
+      "burger": 83,
+      "burgerColor": "hsl(135, 70%, 50%)",
+      "sandwich": 25,
+      "sandwichColor": "hsl(209, 70%, 50%)",
+      "kebab": 68,
+      "kebabColor": "hsl(177, 70%, 50%)",
+      "fries": 96,
+      "friesColor": "hsl(353, 70%, 50%)",
+      "donut": 85,
+      "donutColor": "hsl(81, 70%, 50%)",
+      "junk": 7,
+      "junkColor": "hsl(85, 70%, 50%)",
+      "sushi": 87,
+      "sushiColor": "hsl(278, 70%, 50%)",
+      "ramen": 69,
+      "ramenColor": "hsl(148, 70%, 50%)",
+      "curry": 54,
+      "curryColor": "hsl(265, 70%, 50%)",
+      "udon": 42,
+      "udonColor": "hsl(291, 70%, 50%)"
+    },
+    {
+      "country": "AM",
+      "hot dog": 14,
+      "hot dogColor": "hsl(64, 70%, 50%)",
+      "burger": 12,
+      "burgerColor": "hsl(272, 70%, 50%)",
+      "sandwich": 91,
+      "sandwichColor": "hsl(137, 70%, 50%)",
+      "kebab": 76,
+      "kebabColor": "hsl(184, 70%, 50%)",
+      "fries": 16,
+      "friesColor": "hsl(330, 70%, 50%)",
+      "donut": 14,
+      "donutColor": "hsl(264, 70%, 50%)",
+      "junk": 68,
+      "junkColor": "hsl(21, 70%, 50%)",
+      "sushi": 77,
+      "sushiColor": "hsl(279, 70%, 50%)",
+      "ramen": 48,
+      "ramenColor": "hsl(5, 70%, 50%)",
+      "curry": 8,
+      "curryColor": "hsl(358, 70%, 50%)",
+      "udon": 49,
+      "udonColor": "hsl(312, 70%, 50%)"
+    },
+    {
+      "country": "AO",
+      "hot dog": 68,
+      "hot dogColor": "hsl(289, 70%, 50%)",
+      "burger": 80,
+      "burgerColor": "hsl(59, 70%, 50%)",
+      "sandwich": 64,
+      "sandwichColor": "hsl(105, 70%, 50%)",
+      "kebab": 37,
+      "kebabColor": "hsl(127, 70%, 50%)",
+      "fries": 72,
+      "friesColor": "hsl(330, 70%, 50%)",
+      "donut": 34,
+      "donutColor": "hsl(330, 70%, 50%)",
+      "junk": 67,
+      "junkColor": "hsl(149, 70%, 50%)",
+      "sushi": 82,
+      "sushiColor": "hsl(286, 70%, 50%)",
+      "ramen": 12,
+      "ramenColor": "hsl(29, 70%, 50%)",
+      "curry": 9,
+      "curryColor": "hsl(1, 70%, 50%)",
+      "udon": 13,
+      "udonColor": "hsl(125, 70%, 50%)"
+    },
+    {
+      "country": "AQ",
+      "hot dog": 90,
+      "hot dogColor": "hsl(108, 70%, 50%)",
+      "burger": 47,
+      "burgerColor": "hsl(221, 70%, 50%)",
+      "sandwich": 99,
+      "sandwichColor": "hsl(249, 70%, 50%)",
+      "kebab": 14,
+      "kebabColor": "hsl(10, 70%, 50%)",
+      "fries": 80,
+      "friesColor": "hsl(342, 70%, 50%)",
+      "donut": 36,
+      "donutColor": "hsl(183, 70%, 50%)",
+      "junk": 88,
+      "junkColor": "hsl(208, 70%, 50%)",
+      "sushi": 53,
+      "sushiColor": "hsl(33, 70%, 50%)",
+      "ramen": 30,
+      "ramenColor": "hsl(58, 70%, 50%)",
+      "curry": 90,
+      "curryColor": "hsl(98, 70%, 50%)",
+      "udon": 91,
+      "udonColor": "hsl(349, 70%, 50%)"
+    }
+  ]
+  return (
+    <Box maxW="800px" h="lg">
+      <h2>HeatMap Chart</h2>
+      <ResponsiveHeatMap
+          data={data}
+          keys={[
+              'hot dog',
+              'burger',
+              'sandwich',
+              'kebab',
+              'fries',
+              'donut',
+              'junk',
+              'sushi',
+              'ramen',
+              'curry',
+              'udon'
+          ]}
+          indexBy="country"
+          margin={{ top: 100, right: 60, bottom: 60, left: 60 }}
+          forceSquare={true}
+          padding={5}
+          axisTop={{ orient: 'top', tickSize: 5, tickPadding: 5, tickRotation: -90, legend: '', legendOffset: 36 }}
+          axisRight={null}
+          axisBottom={null}
+          axisLeft={{
+              orient: 'left',
+              tickSize: 5,
+              tickPadding: 5,
+              tickRotation: 0,
+              legend: 'country',
+              legendPosition: 'middle',
+              legendOffset: -40
+          }}
+          cellOpacity={1}
+          cellBorderColor={{ from: 'color', modifiers: [ [ 'darker', 0.4 ] ] }}
+          labelTextColor={{ from: 'color', modifiers: [ [ 'darker', 1.8 ] ] }}
+          defs={[
+              {
+                  id: 'lines',
+                  type: 'patternLines',
+                  background: 'inherit',
+                  color: 'rgba(0, 0, 0, 0.1)',
+                  rotation: -45,
+                  lineWidth: 4,
+                  spacing: 7
+              }
+          ]}
+          fill={[ { id: 'lines' } ]}
+          animate={true}
+          motionConfig="wobbly"
+          motionStiffness={80}
+          motionDamping={9}
+          hoverTarget="cell"
+          cellHoverOthersOpacity={0.25}
+      />
+    </Box>
+  )
 }
 
 export default function Nivo() {
@@ -825,6 +1105,8 @@ export default function Nivo() {
       <RadarChart />
       <hr />
       <PieChart />
+      <hr />
+      <HeatMapChart />
     </main>
   );
 }

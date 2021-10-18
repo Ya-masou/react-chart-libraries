@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ApexCharts renders PieChart unchanged 1`] = `
+<div
+  height="auto"
+  options={
+    Object {
+      "chart": Object {
+        "animations": Object {
+          "enabled": false,
+        },
+        "height": "800px",
+        "id": "basic-bar",
+        "toolbar": Object {
+          "show": false,
+        },
+      },
+      "dataLabels": Object {
+        "enabled": false,
+      },
+      "xaxis": Object {
+        "categories": Array [
+          1991,
+          1992,
+          1993,
+          1994,
+          1995,
+          1996,
+          1997,
+          1998,
+          1999,
+        ],
+        "convertedCatToNumeric": true,
+      },
+    }
+  }
+  series={
+    Array [
+      Object {
+        "color": "rgba(255, 0, 0, 0.2)",
+        "data": Array [
+          30,
+          40,
+          45,
+          50,
+          49,
+          60,
+          70,
+          91,
+          8,
+        ],
+        "name": "series-1",
+        "type": "line",
+      },
+      Object {
+        "data": Array [
+          20,
+          10,
+          40,
+          19,
+          30,
+          30,
+          20,
+          100,
+          80,
+        ],
+        "name": "series-2",
+        "type": "bar",
+      },
+    ]
+  }
+  type="line"
+  width="100%"
+/>
+`;
